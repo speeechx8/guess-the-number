@@ -18,46 +18,57 @@ function ask(questionText) {
 // }
 
 async function guessNumber() {
-  let min = 0;
-  let max = 100;
-  let i = 1;
-  // While the value is not found
-  while(min <= max) {
-    // Finds middle number
-    let guess = Math.floor((min + max) / 2);
-    const answerGuess = await ask(`Is your number... ${guess}? (Y/N) `);
-    if(answerGuess.toLowerCase() === "y") {
-      // Wording if guess only took one time
-      if(i === 1) {
-        console.log(`Your number was ${guess}!\nIt took me only ${i} try to guess your number!`);
-        break;
+  console.log("Think of a number between 1 and 100 (inclusive) and I will try to guess it.");
+  // Wait 3 seconds then start game
+  setTimeout(() => binarySearch(), 3000);
+
+  async function binarySearch() {
+    let min = 0;
+    let max = 100;
+    let i = 1;
+    // While the value is not found
+    while(min <= max) {
+      // Finds middle number
+      let guess = Math.floor((min + max) / 2);
+      const answerGuess = await ask(`Is your number... ${guess}? (Y/N) `);
+      if(answerGuess.toLowerCase() === "y") {
+        // Wording if guess only took one time
+        if(i === 1) {
+          console.log(`Your number was ${guess}!\nIt took me only ${i} try to guess your number!`);
+          break;
+        }
+        // Wording if guess took more than one time
+        else {
+          console.log(`Your number was ${guess}!\nIt took me ${i} tries to guess your number!`);
+          break;
+        }
       }
-      // Wording if guess took more than one time
-      else {
-        console.log(`Your number was ${guess}!\nIt took me ${i} tries to guess your number!`);
-        break;
+      else if(answerGuess.toLowerCase() === "n") {
+        if(min === max) {
+          console.log("You cheat! I don't want to play with you anymore!");
+          break;
+        }
+        const answerDir = await ask("Is your number higher (H), or lower (L)? ");
+        // If computer guess is lower than player number
+        if(answerDir.toLowerCase() === "h") {
+          min = guess + 1;
+        }
+        else if(answerDir.toLowerCase() === "l") {
+          max = guess - 1;
+        }
+        i++;
       }
     }
-    else if(answerGuess.toLowerCase() === "n") {
-      if(min === max) {
-        console.log("You cheat! I don't want to play with you anymore!");
-        break;
-      }
-      const answerDir = await ask("Is your number higher (H), or lower (L)? ");
-      // If computer guess is lower than player number
-      if(answerDir.toLowerCase() === "h") {
-        min = guess + 1;
-      }
-      else if(answerDir.toLowerCase() === "l") {
-        max = guess - 1;
-      }
-      i++;
+    const playAgain = await ask("Play again? (Y/N) ");
+    if(playAgain.toLowerCase() === "y")
+    {
+      guessNumber();
+    }
+    else if(playAgain.toLowerCase() === "n") {
+      // Close out readline
+      rl.close();
+      process.emit();
     }
   }
-  // Close out readline
-  rl.close();
-  process.emit();
 }
-console.log("Think of a number between 1 and 100 (inclusive) and I will try to guess it.");
-// Wait 3 seconds then start game
-setTimeout(() => guessNumber(), 3000);
+guessNumber();
