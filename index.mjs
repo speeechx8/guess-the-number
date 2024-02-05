@@ -9,13 +9,13 @@ function ask(questionText) {
 }
 
 // Returns random number between inclusive min and exclusive max
-function getRandomNumber(min, max) {
-  // Converts args to integers
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  // Returns integer between the min and max numbers
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
-}
+// function getRandomNumber(min, max) {
+//   // Converts args to integers
+//   const minCeiled = Math.ceil(min);
+//   const maxFloored = Math.floor(max);
+//   // Returns integer between the min and max numbers
+//   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+// }
 
 async function guessNumber() {
   let min = 0;
@@ -55,6 +55,5 @@ async function guessNumber() {
   process.emit();
 }
 console.log("Think of a number between 1 and 100 (inclusive) and I will try to guess it.");
-// Wait 5 seconds then start game
-// setTimeout(() => binarySearch(), 5000);
-guessNumber();
+// Wait 3 seconds then start game
+setTimeout(() => guessNumber(), 3000);
