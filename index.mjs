@@ -39,6 +39,10 @@ async function guessNumber() {
       }
     }
     else if(answerGuess.toLowerCase() === "n") {
+      if(min === max) {
+        console.log("You cheat! I don't want to play with you anymore!");
+        break;
+      }
       const answerDir = await ask("Is your number higher (H), or lower (L)? ");
       // If computer guess is lower than player number
       if(answerDir.toLowerCase() === "h") {
