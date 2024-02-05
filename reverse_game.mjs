@@ -23,9 +23,9 @@ async function reverseGuessNumber() {
     const num = getRandomNumber(parseInt(minNum), (parseInt(maxNum)) + 1);
     console.log(num);
     // Wait 3 seconds then start game
-    setTimeout(() => binarySearch(Math.floor(minNum), Math.floor(maxNum)), 3000);
+    setTimeout(() => playerGuessing(Math.floor(minNum), Math.floor(maxNum)), 3000);
 
-    async function binarySearch(min, max) {
+    async function playerGuessing(min, max) {
         let i = 1;
         let numFound = false;
         // While player is still guessing
