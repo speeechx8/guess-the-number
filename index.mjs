@@ -8,15 +8,6 @@ function ask(questionText) {
   });
 }
 
-// Returns random number between inclusive min and exclusive max
-// function getRandomNumber(min, max) {
-//   // Converts args to integers
-//   const minCeiled = Math.ceil(min);
-//   const maxFloored = Math.floor(max);
-//   // Returns integer between the min and max numbers
-//   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
-// }
-
 async function guessNumber() {
   const minNum = await ask("What is the lowest possible number? ");
   const maxNum = await ask("What is the highest possible number? ");
@@ -61,9 +52,9 @@ async function guessNumber() {
         i++;
       }
     }
+    // Play again?
     const playAgain = await ask("Play again? (Y/N) ");
-    if(playAgain.toLowerCase() === "y")
-    {
+    if(playAgain.toLowerCase() === "y") {
       guessNumber();
     }
     else if(playAgain.toLowerCase() === "n") {
