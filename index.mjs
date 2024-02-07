@@ -8,6 +8,8 @@ function ask(questionText) {
   });
 }
 
+
+
 // Checks if player entered a number
 function checkIfValid_Number(input) {
   const regex = /^[0-9]/;
@@ -90,7 +92,7 @@ async function playAgain() {
 }
 
 async function guessNumber() {
-  console.log("The Original Number Guessing Game!\n");
+  console.log("\nThe Original Number Guessing Game!\n");
   let minNum;
   let maxNum;
   // Check for valid input
@@ -176,7 +178,7 @@ async function guessNumber() {
 }
 
 async function reverseGuessNumber() {
-  console.log("The Reversed Number Guessing Game!\n");
+  console.log("\nThe Reversed Number Guessing Game!\n");
   let minNum;
   let maxNum;
   // Check for valid input
@@ -250,6 +252,19 @@ async function reverseGuessNumber() {
 }
 
 async function chooseGame() {
+	// Clears console
+	console.clear();
+
+	// ACSII art
+  console.log(`%c
+        ____                       _____ _             _   _                 _
+       / ___|_   _  ___  ___ ___  |_   _| |__   ___   | \\ | |_   _ _ __ ___ | |__   ___ _ __        
+      | |  _| | | |/ _ \\/ __/ __|   | | | '_ \\ / _ \\  |  \\| | | | | '_ \` _ \\| '_ \\ / _ \\ '__| 
+      | |_| | |_| |  __/\\__ \\__ \\   | | | | | |  __/  | |\\  | |_| | | | | | | |_) |  __/ |    
+       \\____|\\__,_|\\___||___/___/   |_| |_| |_|\\___|  |_| \\_|\\__,_|_| |_| |_|_.__/ \\___|_| 
+      																									`,
+      `font-family: monospace`);
+
   let choice;
   // Check for valid input
   while(true) {
