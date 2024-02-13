@@ -201,7 +201,7 @@ async function reverseGuessNumber() {
   }
   console.log(`I will think of a number between ${Math.floor(minNum)} and ${Math.floor(maxNum)} (inclusive) and you will try to guess it.`);
   const num = getRandomNumber(parseInt(minNum), (parseInt(maxNum)) + 1);
-  console.log(num);
+  // console.log(num); // USE FOR DEBUGGING
   // Wait 3 seconds then start game
   setTimeout(() => playerGuessing(Math.floor(minNum), Math.floor(maxNum)), 3000);
 
